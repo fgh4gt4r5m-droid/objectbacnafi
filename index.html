@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Objectif BAC D 2026</title>
+    <meta name="theme-color" content="#172033" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Terminale D · Côte d’Ivoire · Session 2026</p>
+        <h1>Objectif BAC D</h1>
+      </div>
+      <nav aria-label="Navigation principale">
+        <button class="nav active" data-view="dashboard">Tableau</button>
+        <button class="nav" data-view="plan">Plan express</button>
+        <button class="nav" data-view="subjects">Matières</button>
+        <button class="nav" data-view="exam">Mode examen</button>
+        <button class="nav" data-view="progress">Suivi</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view active" id="dashboard">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="eyebrow">Moins d’une semaine : on va droit à l’essentiel</p>
+            <h2>Réviser les priorités, s’entraîner sous pression, corriger les erreurs.</h2>
+            <p>
+              Cette application concentre les derniers jours sur les matières clés de Terminale D :
+              Mathématiques, Physique-Chimie, SVT, Français, Philosophie, Anglais et Histoire-Géographie.
+            </p>
+            <div class="hero-actions">
+              <button class="primary" data-jump="plan">Suivre le plan</button>
+              <button class="secondary" data-jump="exam">Lancer un sujet blanc</button>
+            </div>
+          </div>
+          <aside class="countdown-card">
+            <p class="eyebrow">Objectif</p>
+            <strong id="daysLeft">J-?</strong>
+            <span>avant le début visé des écrits</span>
+            <label>
+              Date des premières épreuves
+              <input type="date" id="examDate" />
+            </label>
+          </aside>
+        </div>
+
+        <div class="metric-grid">
+          <article>
+            <strong id="scoreMetric">0</strong>
+            <span>points de préparation</span>
+          </article>
+          <article>
+            <strong id="doneMetric">0</strong>
+            <span>activités validées</span>
+          </article>
+          <article>
+            <strong id="weakMetric">À définir</strong>
+            <span>matière à renforcer</span>
+          </article>
+        </div>
+
+        <section class="band">
+          <div class="section-title">
+            <p class="eyebrow">Aujourd’hui</p>
+            <h2>Routine de 2 h 30</h2>
+          </div>
+          <div class="routine">
+            <article><strong>45 min</strong><span>Exercices maths ou physique</span></article>
+            <article><strong>35 min</strong><span>SVT : schémas + définitions</span></article>
+            <article><strong>30 min</strong><span>Philo/français : plan détaillé</span></article>
+            <article><strong>25 min</strong><span>Anglais : texte + vocabulaire</span></article>
+            <article><strong>15 min</strong><span>Correction et carnet d’erreurs</span></article>
+          </div>
+        </section>
+
+        <section class="band">
+          <div class="section-title">
+            <p class="eyebrow">Annales 2021-2025</p>
+            <h2>Axes probables à travailler</h2>
+          </div>
+          <div class="routine">
+            <article><strong>Maths</strong><span>Fonctions, suites, probabilités, complexes</span></article>
+            <article><strong>PC</strong><span>Électricité, mécanique, dosage, pH</span></article>
+            <article><strong>SVT</strong><span>Génétique, immunologie, schémas, documents</span></article>
+            <article><strong>Philo</strong><span>Liberté, vérité, science, État, travail</span></article>
+            <article><strong>Langues</strong><span>Compréhension, résumé, expression écrite</span></article>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="plan">
+        <div class="section-title">
+          <p class="eyebrow">Dernière ligne droite</p>
+          <h2>Plan express sur 6 jours</h2>
+        </div>
+        <div class="plan-list" id="planList"></div>
+      </section>
+
+      <section class="view" id="subjects">
+        <div class="section-title">
+          <p class="eyebrow">Révisions ciblées</p>
+          <h2>Matières et exercices types</h2>
+        </div>
+        <div class="subject-layout">
+          <aside class="subject-menu" id="subjectMenu"></aside>
+          <section class="subject-panel" id="subjectPanel"></section>
+        </div>
+      </section>
+
+      <section class="view" id="exam">
+        <div class="section-title">
+          <p class="eyebrow">Simulation</p>
+          <h2>Mode examen chronométré</h2>
+        </div>
+        <div class="exam-tools">
+          <select id="examSubject" aria-label="Choisir une matière"></select>
+          <select id="examDuration" aria-label="Durée">
+            <option value="30">30 min</option>
+            <option value="60">60 min</option>
+            <option value="90">90 min</option>
+            <option value="180">3 h</option>
+          </select>
+          <button class="primary" id="startExam">Démarrer</button>
+          <button class="secondary" id="finishExam">Terminer</button>
+        </div>
+        <div class="exam-grid">
+          <article class="timer-card">
+            <span>Temps restant</span>
+            <strong id="timer">00:00</strong>
+            <p id="examStatus">Choisis une matière puis démarre.</p>
+          </article>
+          <article class="paper-card">
+            <h3 id="paperTitle">Sujet blanc</h3>
+            <div id="paperBody"></div>
+          </article>
+          <article class="answer-card">
+            <h3>Réponse de l’élève</h3>
+            <textarea id="studentAnswer" placeholder="Elle peut noter ici son plan, ses calculs ou ses réponses clés."></textarea>
+            <button class="secondary" id="saveAnswer">Enregistrer la tentative</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="progress">
+        <div class="section-title">
+          <p class="eyebrow">Suivi parent</p>
+          <h2>Ce qui a été travaillé</h2>
+        </div>
+        <div class="progress-grid">
+          <article>
+            <strong id="progressScore">0</strong>
+            <span>points</span>
+          </article>
+          <article>
+            <strong id="progressCount">0</strong>
+            <span>validations</span>
+          </article>
+          <article>
+            <strong id="progressLast">Aucune</strong>
+            <span>dernière activité</span>
+          </article>
+        </div>
+        <div class="history" id="history"></div>
+        <button class="danger" id="resetProgress">Réinitialiser la progression</button>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
