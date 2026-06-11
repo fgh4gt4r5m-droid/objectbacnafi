@@ -18,6 +18,7 @@
         <button class="nav active" data-view="dashboard">Tableau</button>
         <button class="nav" data-view="plan">Plan express</button>
         <button class="nav" data-view="subjects">Matières</button>
+        <button class="nav" data-view="worksheets">Fiches</button>
         <button class="nav" data-view="exam">Mode examen</button>
         <button class="nav" data-view="progress">Suivi</button>
       </nav>
@@ -110,6 +111,23 @@
           <aside class="subject-menu" id="subjectMenu"></aside>
           <section class="subject-panel" id="subjectPanel"></section>
         </div>
+      </section>
+
+      <section class="view" id="worksheets">
+        <div class="section-title no-print">
+          <p class="eyebrow">Pour FOFANA ASSITA ALEXANDRA</p>
+          <h2>Fiches d'exercices imprimables</h2>
+          <p>
+            Choisis une fiche, fais-la sur ordinateur/tablette ou imprime-la. Les corrections sont
+            disponibles plus bas pour le travail apres la tentative.
+          </p>
+        </div>
+        <div class="worksheet-tools no-print">
+          <select id="worksheetSelect" aria-label="Choisir une fiche"></select>
+          <button class="primary" id="printWorksheet">Imprimer la fiche</button>
+          <button class="secondary" id="markWorksheet">Marquer comme traitee</button>
+        </div>
+        <article class="worksheet-sheet" id="worksheetSheet"></article>
       </section>
 
       <section class="view" id="exam">

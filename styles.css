@@ -84,7 +84,8 @@ h3 {
 
 nav,
 .hero-actions,
-.exam-tools {
+.exam-tools,
+.worksheet-tools {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -173,6 +174,7 @@ main {
 .timer-card,
 .paper-card,
 .answer-card,
+.worksheet-sheet,
 .progress-grid article,
 .history {
   border: 1px solid var(--line);
@@ -400,8 +402,98 @@ textarea {
   margin-bottom: 14px;
 }
 
-.exam-tools select {
+.exam-tools select,
+.worksheet-tools select {
   width: min(260px, 100%);
+}
+
+.worksheet-tools {
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.worksheet-sheet {
+  padding: 28px;
+  background: #fff;
+}
+
+.worksheet-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: start;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.worksheet-head h2 {
+  margin-bottom: 6px;
+  font-size: clamp(1.45rem, 3vw, 2.25rem);
+}
+
+.student-box {
+  min-width: 230px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.student-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.worksheet-meta,
+.worksheet-instructions {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f4f7fb;
+}
+
+.worksheet-exercise {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.worksheet-exercise h3 {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.worksheet-exercise ol {
+  padding-left: 22px;
+  line-height: 1.65;
+}
+
+.answer-lines {
+  display: grid;
+  gap: 13px;
+  margin-top: 14px;
+}
+
+.answer-lines span {
+  display: block;
+  height: 22px;
+  border-bottom: 1px solid #c8d2df;
+}
+
+.correction-block {
+  margin-top: 18px;
+  border: 1px solid rgba(18, 128, 92, 0.3);
+  border-radius: 8px;
+  padding: 14px;
+  background: #edf9f4;
+}
+
+.correction-block summary {
+  cursor: pointer;
+  font-weight: 900;
 }
 
 .exam-grid {
@@ -465,6 +557,10 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .worksheet-head {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     min-height: 0;
   }
@@ -491,5 +587,45 @@ textarea {
 
   .task {
     grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .topbar,
+  .no-print,
+  .view:not(.active),
+  .correction-block,
+  #progress,
+  #dashboard,
+  #plan,
+  #subjects,
+  #exam {
+    display: none !important;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  #worksheets {
+    display: block !important;
+  }
+
+  .worksheet-sheet {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .worksheet-exercise {
+    break-inside: avoid;
+  }
+
+  .answer-lines span {
+    height: 26px;
   }
 }
